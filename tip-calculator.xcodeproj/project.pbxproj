@@ -30,6 +30,7 @@
 		7BCFBB5D29C92EA20009ABA0 /* UIColor+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFBB5C29C92EA20009ABA0 /* UIColor+Extention.swift */; };
 		7BCFBB6029C945400009ABA0 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFBB5F29C945400009ABA0 /* LabelFactory.swift */; };
 		7BCFBB6229C9B0690009ABA0 /* UIView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFBB6129C9B0690009ABA0 /* UIView+Extention.swift */; };
+		7BCFBB6429C9D46E0009ABA0 /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFBB6329C9D46E0009ABA0 /* AmountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		7BCFBB5C29C92EA20009ABA0 /* UIColor+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extention.swift"; sourceTree = "<group>"; };
 		7BCFBB5F29C945400009ABA0 /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		7BCFBB6129C9B0690009ABA0 /* UIView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extention.swift"; sourceTree = "<group>"; };
+		7BCFBB6329C9D46E0009ABA0 /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				7BCFBB5029C90FE50009ABA0 /* BillInputView.swift */,
 				7BCFBB5229C9101C0009ABA0 /* TipInputView.swift */,
 				7BCFBB5429C9104A0009ABA0 /* SplitInputView.swift */,
+				7BCFBB6329C9D46E0009ABA0 /* AmountView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BCFBB6429C9D46E0009ABA0 /* AmountView.swift in Sources */,
 				7BCFBB1229C905A60009ABA0 /* CalculaterVC.swift in Sources */,
 				7BCFBB4D29C90DBB0009ABA0 /* LogoView.swift in Sources */,
 				7BCFBB5829C92E260009ABA0 /* ThemeColor.swift in Sources */,
