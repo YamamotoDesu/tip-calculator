@@ -198,6 +198,8 @@ struct ThemeFont {
 
 ### Add LogoView Detail
 
+<img width="300" src="https://user-images.githubusercontent.com/47273077/226533725-1d9419e1-3338-4563-abfc-8141cd3de226.png">
+
 LabelFactory.swift
 ```swift
 import UIKit
