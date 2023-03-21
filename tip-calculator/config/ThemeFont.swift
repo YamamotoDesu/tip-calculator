@@ -17,7 +17,7 @@ struct ThemeFont {
         return UIFont(name: "AvenirNext-Bold", size: size) ?? .systemFont(ofSize: size)
     }
     
-    static func dembold(ofSize size: CGFloat) -> UIFont {
+    static func demibold(ofSize size: CGFloat) -> UIFont {
         return UIFont(name: "AvenirNext-DemBold", size: size) ?? .systemFont(ofSize: size)
     }
 }

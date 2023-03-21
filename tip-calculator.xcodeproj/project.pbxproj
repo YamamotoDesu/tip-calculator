@@ -29,6 +29,7 @@
 		7BCFBB5A29C92E340009ABA0 /* ThemeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFBB5929C92E340009ABA0 /* ThemeFont.swift */; };
 		7BCFBB5D29C92EA20009ABA0 /* UIColor+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFBB5C29C92EA20009ABA0 /* UIColor+Extention.swift */; };
 		7BCFBB6029C945400009ABA0 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFBB5F29C945400009ABA0 /* LabelFactory.swift */; };
+		7BCFBB6229C9B0690009ABA0 /* UIView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFBB6129C9B0690009ABA0 /* UIView+Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		7BCFBB5929C92E340009ABA0 /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
 		7BCFBB5C29C92EA20009ABA0 /* UIColor+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extention.swift"; sourceTree = "<group>"; };
 		7BCFBB5F29C945400009ABA0 /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
+		7BCFBB6129C9B0690009ABA0 /* UIView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extention.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				7BCFBB5C29C92EA20009ABA0 /* UIColor+Extention.swift */,
+				7BCFBB6129C9B0690009ABA0 /* UIView+Extention.swift */,
 			);
 			path = extention;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				7BCFBB4F29C90FB40009ABA0 /* ResultView.swift in Sources */,
 				7BCFBB0E29C905A60009ABA0 /* AppDelegate.swift in Sources */,
 				7BCFBB5A29C92E340009ABA0 /* ThemeFont.swift in Sources */,
+				7BCFBB6229C9B0690009ABA0 /* UIView+Extention.swift in Sources */,
 				7BCFBB1029C905A60009ABA0 /* SceneDelegate.swift in Sources */,
 				7BCFBB5D29C92EA20009ABA0 /* UIColor+Extention.swift in Sources */,
 				7BCFBB6029C945400009ABA0 /* LabelFactory.swift in Sources */,
