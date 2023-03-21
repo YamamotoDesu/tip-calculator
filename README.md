@@ -94,6 +94,9 @@ class LogoView: UIView {
 
 ## Setup UI
 ### Add Theme Constant
+⭐️ https://coolors.co/palettes/trending
+⭐️ https://developer.apple.com/fonts/system-fonts/
+
 UIColor+Extention.swift
 ```swift
 import UIKit
