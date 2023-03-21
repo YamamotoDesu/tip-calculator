@@ -5,6 +5,41 @@ https://www.udemy.com/course/ios-swift-mvvm-combine-snapkit-snapshot-ui-unit-tes
 
 ## Introduction
 ### Set up Project
+
+```swift
+private lazy var vStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            logoView,
+            resultView,
+            billInputView,
+            tipInputView,
+            splitInputView
+        ])
+        stackView.axis = .vertical
+        stackView.spacing = 36
+        return stackView
+    }()
+```
+
+<img width="377" alt="スクリーンショット 2023-03-21 10 45 57" src="https://user-images.githubusercontent.com/47273077/226500737-29298eec-001e-4588-9880-d4507ffada0c.png">
+
+```swift
+   private lazy var vStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            logoView,
+            resultView,
+            billInputView,
+            tipInputView,
+            splitInputView,
+            UIView()
+        ])
+        stackView.axis = .vertical
+        stackView.spacing = 36
+        return stackView
+    }()
+```
+ 
+
 ```swift
 import UIKit
 import SnapKit
