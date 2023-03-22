@@ -604,3 +604,145 @@ class AmountView: UIView {
 }
 
 ```
+
+### Add Bill Input View Details
+<img width="300" alt="スクリーンショット 2023-03-22 15 05 28" src="https://user-images.githubusercontent.com/47273077/226816431-bee01cb4-7d38-41cd-896a-1f9be0d509a5.png">
+
+UIView+Extention.swift
+```swift
+extension UIView {
+    
+    func addShadow(offset: CGSize, color: UIColor, radius: CGFloat, opacity: Float) {
+        layer.cornerRadius = radius
+        layer.masksToBounds = false
+        layer.shadowOffset = offset
+        layer.shadowColor = color.cgColor
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+        
+        let backgroundCGColor = backgroundColor?.cgColor
+        backgroundColor = nil
+        
+        layer.backgroundColor = backgroundCGColor
+    }
+    
+    func addCornerRadius(radius: CGFloat) {
+        layer.masksToBounds = false
+        layer.cornerRadius = radius
+    }
+}
+```
+
+BillInputView.swift
+```swift
+import UIKit
+
+class BillInputView: UIView {
+    
+    private let headerView: HeaderView = {
+       return HeaderView()
+    }()
+    
+    private let textFieldContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.addCornerRadius(radius: 0.0)
+        return view
+    }()
+    
+    private let currencyDenominationLabel: UILabel = {
+        let label = LabelFactory.build(
+            text: "$",
+            font: ThemeFont.bold(ofSize: 24))
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        return label
+    }()
+    
+    private lazy var textField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .none
+        textField.font = ThemeFont.demibold(ofSize: 28)
+        textField.keyboardType = .decimalPad
+        textField.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        textField.tintColor = ThemeColor.text
+        textField.textColor = ThemeColor.text
+        // Add toolbar
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 36))
+        toolBar.barStyle = .default
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(
+            title: "Done",
+            style: .plain,
+            target: self,
+            action: #selector(self.doneButtonTapped))
+        toolBar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                            target: nil,
+                            action: nil),
+            doneButton
+        ]
+        toolBar.isUserInteractionEnabled = true
+        textField.inputAccessoryView = toolBar
+        return textField
+    }()
+    
+    init() {
+        super.init(frame: .zero)
+        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func layout() {
+        [headerView, textFieldContainerView].forEach(addSubview(_:))
+        
+        headerView.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.centerY.equalTo(textFieldContainerView.snp.centerY)
+            make.width.equalTo(68)
+            make.trailing.equalTo(textFieldContainerView.snp.leading).offset(-24)
+        }
+        
+        textFieldContainerView.snp.makeConstraints { make in
+            make.top.trailing.bottom.equalToSuperview()
+        }
+        
+        textFieldContainerView.addSubview(currencyDenominationLabel)
+        textFieldContainerView.addSubview(textField)
+        
+        currencyDenominationLabel.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.leading.equalTo(textFieldContainerView.snp.leading).offset(16)
+        }
+        
+        textField.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.leading.equalTo(currencyDenominationLabel.snp.trailing).offset(16)
+            make.trailing.equalTo(textFieldContainerView.snp.trailing).offset(-16)
+        }
+    }
+    
+    @objc private func doneButtonTapped() {
+        textField.endEditing(true)
+    }
+}
+
+class HeaderView: UIView {
+    
+    init() {
+        super.init(frame: .zero)
+        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func layout() {
+        backgroundColor = .red
+    }
+}
+```
+
