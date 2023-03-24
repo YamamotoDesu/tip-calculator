@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B4B3B0929CD2BBB0052A56D /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B3B0829CD2BBB0052A56D /* Tip.swift */; };
+		7B4B3B0C29CD2C200052A56D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B3B0B29CD2C200052A56D /* HeaderView.swift */; };
 		7BCFBB0E29C905A60009ABA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFBB0D29C905A60009ABA0 /* AppDelegate.swift */; };
 		7BCFBB1029C905A60009ABA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFBB0F29C905A60009ABA0 /* SceneDelegate.swift */; };
 		7BCFBB1229C905A60009ABA0 /* CalculaterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFBB1129C905A60009ABA0 /* CalculaterVC.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B4B3B0829CD2BBB0052A56D /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		7B4B3B0B29CD2C200052A56D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		7BCFBB0A29C905A60009ABA0 /* tip-calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tip-calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BCFBB0D29C905A60009ABA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BCFBB0F29C905A60009ABA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B4B3B0729CD2BAB0052A56D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				7B4B3B0829CD2BBB0052A56D /* Tip.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		7BCFBB0129C905A60009ABA0 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +142,7 @@
 		7BCFBB0C29C905A60009ABA0 /* tip-calculator */ = {
 			isa = PBXGroup;
 			children = (
+				7B4B3B0729CD2BAB0052A56D /* model */,
 				7BCFBB5E29C945220009ABA0 /* factory */,
 				7BCFBB5B29C92E8D0009ABA0 /* extention */,
 				7BCFBB5629C92DF10009ABA0 /* config */,
@@ -177,6 +190,7 @@
 				7BCFBB5229C9101C0009ABA0 /* TipInputView.swift */,
 				7BCFBB5429C9104A0009ABA0 /* SplitInputView.swift */,
 				7BCFBB6329C9D46E0009ABA0 /* AmountView.swift */,
+				7B4B3B0B29CD2C200052A56D /* HeaderView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -365,8 +379,10 @@
 				7BCFBB1029C905A60009ABA0 /* SceneDelegate.swift in Sources */,
 				7BCFBB5D29C92EA20009ABA0 /* UIColor+Extention.swift in Sources */,
 				7BCFBB6029C945400009ABA0 /* LabelFactory.swift in Sources */,
+				7B4B3B0929CD2BBB0052A56D /* Tip.swift in Sources */,
 				7BCFBB5529C9104A0009ABA0 /* SplitInputView.swift in Sources */,
 				7BCFBB5329C9101C0009ABA0 /* TipInputView.swift in Sources */,
+				7B4B3B0C29CD2C200052A56D /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
