@@ -1168,7 +1168,7 @@ class CalculaterVM {
 
 ViewController.swift
 ```swift
- private let vm = CalculaterVM()
+    private let vm = CalculaterVM()
     private var cancelleables = Set<AnyCancellable>()
 
     override func viewDidLoad() {
