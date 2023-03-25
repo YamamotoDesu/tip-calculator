@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B0956EA29CE9B8C0084CFFF /* CalculaterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0956E929CE9B8C0084CFFF /* CalculaterVM.swift */; };
 		7B0956EC29CE9DE00084CFFF /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0956EB29CE9DE00084CFFF /* Result.swift */; };
+		7B0956EE29CEC6D10084CFFF /* String+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0956ED29CEC6D10084CFFF /* String+Extention.swift */; };
 		7B4B3B0929CD2BBB0052A56D /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B3B0829CD2BBB0052A56D /* Tip.swift */; };
 		7B4B3B0C29CD2C200052A56D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B3B0B29CD2C200052A56D /* HeaderView.swift */; };
 		7BCFBB0E29C905A60009ABA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFBB0D29C905A60009ABA0 /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		7B0956E929CE9B8C0084CFFF /* CalculaterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculaterVM.swift; sourceTree = "<group>"; };
 		7B0956EB29CE9DE00084CFFF /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		7B0956ED29CEC6D10084CFFF /* String+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extention.swift"; sourceTree = "<group>"; };
 		7B4B3B0829CD2BBB0052A56D /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		7B4B3B0B29CD2C200052A56D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		7BCFBB0A29C905A60009ABA0 /* tip-calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tip-calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +225,7 @@
 			children = (
 				7BCFBB5C29C92EA20009ABA0 /* UIColor+Extention.swift */,
 				7BCFBB6129C9B0690009ABA0 /* UIView+Extention.swift */,
+				7B0956ED29CEC6D10084CFFF /* String+Extention.swift */,
 			);
 			path = extention;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				7BCFBB5129C90FE50009ABA0 /* BillInputView.swift in Sources */,
 				7BCFBB4F29C90FB40009ABA0 /* ResultView.swift in Sources */,
 				7BCFBB0E29C905A60009ABA0 /* AppDelegate.swift in Sources */,
+				7B0956EE29CEC6D10084CFFF /* String+Extention.swift in Sources */,
 				7BCFBB5A29C92E340009ABA0 /* ThemeFont.swift in Sources */,
 				7B0956EA29CE9B8C0084CFFF /* CalculaterVM.swift in Sources */,
 				7BCFBB6229C9B0690009ABA0 /* UIView+Extention.swift in Sources */,
