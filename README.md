@@ -1131,3 +1131,70 @@ UIView+Extention.swift
 }
 ```
 
+# Setup View Model
+## Add View Model
+
+Result.swift
+```swift
+struct Result {
+    let amountPerPerson: Double
+    let totalBill: Double
+    let totalTip: Double
+}
+```
+
+CalculaterVM.swift
+```swift
+class CalculaterVM {
+    
+    struct Input {
+        let billPublisher: AnyPublisher<Double, Never>
+        let tipPublichser: AnyPublisher<Tip, Never>
+        let splitPublisher: AnyPublisher<Int, Never>
+    }
+    
+    struct Output {
+        let updateViewPublisher: AnyPublisher<Result, Never>
+    }
+    
+    func transform(input: Input) -> Output {
+        
+        let result = Result(amountPerPerson: 500, totalBill: 1000, totalTip: 50.0)
+        
+        return Output(updateViewPublisher: Just(result).eraseToAnyPublisher())
+    }
+}
+```
+
+ViewController.swift
+```swift
+ private let vm = CalculaterVM()
+    private var cancelleables = Set<AnyCancellable>()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        layout()
+        bind()
+    }
+    
+    private func bind() {
+        
+        let input = CalculaterVM.Input(
+            billPublisher: Just(10).eraseToAnyPublisher(),
+            tipPublichser: Just(.tenPercent).eraseToAnyPublisher(),
+            splitPublisher: Just(5).eraseToAnyPublisher())
+        
+        let output = vm.transform(input: input)
+        
+        output.updateViewPublisher.sink { result in
+            print(">>> \(result)")
+        }.store(in: &cancelleables)
+
+    }
+  
+  
+```
+  
+```
+  >>> Result(amountPerPerson: 500.0, totalBill: 1000.0, totalTip: 50.0)
+```
