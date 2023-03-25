@@ -1199,4 +1199,61 @@ ViewController.swift
   >>> Result(amountPerPerson: 500.0, totalBill: 1000.0, totalTip: 50.0)
 ```
 
+## Observe Bill Input View
+String+Extention.swift
+```swift
+extension String {
+    var doubleValue: Double? {
+        Double(self)
+    }
+}
+```
+
+BillInputView.swift
+```swift
+    private let billSubject: PassthroughSubject<Double, Never> = .init()
+    var valuePublisher: AnyPublisher<Double, Never> {
+        return billSubject.eraseToAnyPublisher()
+    }
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        super.init(frame: .zero)
+        layout()
+        observe()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func observe() {
+        textField.textPublisher.sink { [unowned self] text in
+            billSubject.send(text?.doubleValue ?? 0)
+            print("Text: \(text)")
+        }.store(in: &cancellables)
+    }
+```
+
+ViewController.swift
+```swift
+    private func bind() {
+        
+        
+        let input = CalculaterVM.Input(
+            billPublisher: billInputView.valuePublisher,
+            tipPublichser: Just(.tenPercent).eraseToAnyPublisher(),
+            splitPublisher: Just(5).eraseToAnyPublisher())
+        
+        let output = vm.transform(input: input)
+
+
+    }
+ ```
+ 
+ CalculaterVM.swift
+ ```swift
+   private var cancellables = Set<AnyCancellable>()
+ ```
 
