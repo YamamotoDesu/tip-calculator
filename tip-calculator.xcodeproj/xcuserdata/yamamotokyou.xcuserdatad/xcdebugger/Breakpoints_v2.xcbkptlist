@@ -18,6 +18,86 @@
             endingLineNumber = "86"
             landmarkName = "observe()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "84FAC800-382A-4C4F-B065-5877271A533A - 51f65ecd812426e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tip_calculator.BillInputView.observe() -&gt; ()"
+                  moduleName = "tip-calculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yamamotokyou/Git/tip-calculator/tip-calculator/view/BillInputView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "261">
+               </Location>
+               <Location
+                  uuid = "84FAC800-382A-4C4F-B065-5877271A533A - 6f2cebf4edb4f98b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in tip_calculator.BillInputView.observe() -&gt; ()"
+                  moduleName = "tip-calculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yamamotokyou/Git/tip-calculator/tip-calculator/view/BillInputView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "821">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "97FEE9BC-EB54-484B-8067-6B1C26BE84EC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tip-calculator/view/TipInputView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "TipInputView"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "97FEE9BC-EB54-484B-8067-6B1C26BE84EC - 1848a1393b86471d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.UIButton in tip_calculator.TipInputView.tenPercentTipButton.getter : __C.UIButton"
+                  moduleName = "tip-calculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yamamotokyou/Git/tip-calculator/tip-calculator/view/TipInputView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "373">
+               </Location>
+               <Location
+                  uuid = "97FEE9BC-EB54-484B-8067-6B1C26BE84EC - 9e1880bbbac55c2d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; Combine.Just&lt;tip_calculator.Tip&gt; in closure #1 () -&gt; __C.UIButton in tip_calculator.TipInputView.tenPercentTipButton.getter : __C.UIButton"
+                  moduleName = "tip-calculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yamamotokyou/Git/tip-calculator/tip-calculator/view/TipInputView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
