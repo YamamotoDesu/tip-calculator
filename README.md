@@ -1257,3 +1257,71 @@ ViewController.swift
    private var cancellables = Set<AnyCancellable>()
  ```
 
+## Observe Tip Input View
+CalculaterVM.swift
+```swift
+    func transform(input: Input) -> Output {
+        
+        input.tipPublichser.sink { tip in
+            print("the tip \(tip)")
+        }.store(in: &cancellables)
+        
+        let result = Result(amountPerPerson: 500, totalBill: 1000, totalTip: 50.0)
+        
+        return Output(updateViewPublisher: Just(result).eraseToAnyPublisher())
+    }
+```
+
+TipInputView.swift
+```swift
+    private lazy var tenPercentTipButton: UIButton = {
+        let button = buildTipButton(tip: .tenPercent)
+        button.tapPublisher.flatMap {
+            Just(Tip.tenPercent)
+        }.assign(to: \.value, on: tipSubject)
+            .store(in: &cancellables)
+        return button
+    }()
+    
+    private lazy var fifteenPercentTipButton: UIButton = {
+        let button = buildTipButton(tip: .fifteenPercent)
+        button.tapPublisher.flatMap {
+            Just(Tip.fifteenPercent)
+        }.assign(to: \.value, on: tipSubject)
+            .store(in: &cancellables)
+        return button
+    }()
+    
+    private lazy var twentyPercentTipButton: UIButton = {
+        let button = buildTipButton(tip: .twentyPercent)
+        button.tapPublisher.flatMap {
+            Just(Tip.twentyPercent)
+        }.assign(to: \.value, on: tipSubject)
+            .store(in: &cancellables)
+        return button
+    }()
+    
+    private let tipSubject = CurrentValueSubject<Tip, Never>(.none)
+    var valuePublisher: AnyPublisher<Tip, Never> {
+        return tipSubject.eraseToAnyPublisher()
+    }
+    private var cancellables = Set<AnyCancellable>()
+    
+ ```
+ 
+ ViewController.swift
+ ```swift
+     private func bind() {
+        
+        
+        let input = CalculaterVM.Input(
+            billPublisher: billInputView.valuePublisher,
+            tipPublichser: tipInputView.valuePublisher,
+            splitPublisher: Just(5).eraseToAnyPublisher())
+        
+        let output = vm.transform(input: input)
+
+
+    }
+  ```
+ 
