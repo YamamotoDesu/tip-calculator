@@ -1257,7 +1257,7 @@ ViewController.swift
    private var cancellables = Set<AnyCancellable>()
  ```
 
-## Observe Tip Input View
+## [Observe Tip Input View](https://github.com/YamamotoDesu/tip-calculator/commit/4f6c109dcdbcba86730f7dfef2b762632b72eb8c)
 CalculaterVM.swift
 ```swift
     func transform(input: Input) -> Output {
