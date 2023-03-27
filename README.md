@@ -1325,9 +1325,9 @@ TipInputView.swift
     }
   ```
   
-  ## [Handle Custom Tip Button]()
+## [Handle Custom Tip Button](https://github.com/YamamotoDesu/tip-calculator/commit/1dddb0810c68c3a0841cb29eec2f2fa8c0e8682f)
   
-  <img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/227815741-9c91c31e-ff6e-411d-a767-c9af4538f0d3.gif">
+<img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/227815741-9c91c31e-ff6e-411d-a767-c9af4538f0d3.gif">
 
 UIResponder+Entention.swift
 ```swift
@@ -1383,5 +1383,56 @@ TipInputView.swift
         parentViewController?.present(alertController, animated: true)
     }
     
+```
+
+## [Handle Custom Tip Button Selection State]()
+
+<img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/227818664-d5b4ed36-0429-43b2-a090-289a58b24d92.gif">
+
+TipInputView.swift
+```swift
+
+    init() {
+        super.init(frame: .zero)
+        layout()
+        observe()
+    }
+
+    private func observe() {
+        tipSubject.sink { [unowned self] tip in
+            resetView()
+            switch tip {
+            case .none: break
+            case .tenPercent:
+                tenPercentTipButton.backgroundColor = ThemeColor.secondary
+            case .fifteenPercent:
+                fifteenPercentTipButton.backgroundColor = ThemeColor.secondary
+            case .twentyPercent:
+                twentyPercentTipButton.backgroundColor = ThemeColor.secondary
+            case .custom(let value):
+                customTipButton.backgroundColor = ThemeColor.secondary
+                let text = NSMutableAttributedString(
+                    string: "$\(value)",
+                    attributes: [.font: ThemeFont.bold(ofSize: 20)])
+                text.addAttributes([
+                    .font: ThemeFont.bold(ofSize: 14)
+                ], range: NSMakeRange(0, 1))
+                customTipButton.setAttributedTitle(text, for: .normal)
+            }
+        }.store(in: &cancellables)
+    }
+    
+    private func resetView() {
+        [tenPercentTipButton,
+         fifteenPercentTipButton,
+         twentyPercentTipButton,
+         customTipButton].forEach {
+            $0.backgroundColor = ThemeColor.primary
+        }
+        let text = NSMutableAttributedString(
+            string: "Custom tip",
+            attributes: [.font: ThemeFont.bold(ofSize: 20)])
+        customTipButton.setAttributedTitle(text, for: .normal)
+    }
 ```
 
