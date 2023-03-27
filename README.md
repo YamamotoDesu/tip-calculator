@@ -1257,7 +1257,7 @@ ViewController.swift
    private var cancellables = Set<AnyCancellable>()
  ```
 
-## Observe Tip Input View
+## [Observe Tip Input View](https://github.com/YamamotoDesu/tip-calculator/commit/4f6c109dcdbcba86730f7dfef2b762632b72eb8c)
 CalculaterVM.swift
 ```swift
     func transform(input: Input) -> Output {
@@ -1324,4 +1324,64 @@ TipInputView.swift
 
     }
   ```
- 
+  
+  ## [Handle Custom Tip Button]()
+  
+  <img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/227815741-9c91c31e-ff6e-411d-a767-c9af4538f0d3.gif">
+
+UIResponder+Entention.swift
+```swift
+import UIKit
+
+extension UIResponder {
+    var parentViewController: UIViewController? {
+        return next as? UIViewController ?? next?.parentViewController
+    }
+}
+```
+
+TipInputView.swift
+```swift
+    private lazy var customTipButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Custom tip", for: .normal)
+        button.titleLabel?.font = ThemeFont.bold(ofSize: 20)
+        button.backgroundColor = ThemeColor.primary
+        button.tintColor = .white
+        button.addCornerRadius(radius: 8.0)
+        button.tapPublisher.sink { [weak self] _ in
+            self?.handleCustomTipButton()
+        }.store(in: &cancellables)
+        return button
+    }()
+    
+    private func handleCustomTipButton() {
+        let alertController: UIAlertController = {
+            let controller = UIAlertController(
+                title: "Enter custom tip",
+                message: nil,
+                preferredStyle: .alert)
+            controller.addTextField { textField in
+                textField.placeholder = "Make it generous"
+                textField.keyboardType = .numberPad
+                textField.autocorrectionType = .no
+            }
+            let cancelAction = UIAlertAction(
+                title: "Cancel",
+                style: .cancel)
+            let okAction = UIAlertAction(
+                title: "OK",
+                style: .default) { [weak self] _ in
+                    guard let text = controller.textFields?.first?.text,
+                          let value = Int(text) else { return }
+                    
+                    self?.tipSubject.send(.custom(value: value))
+                }
+            [cancelAction, okAction].forEach(controller.addAction(_:))
+            return controller
+        }()
+        parentViewController?.present(alertController, animated: true)
+    }
+    
+```
+
