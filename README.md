@@ -1518,6 +1518,8 @@ private let tipSubject:CurrentValueSubject<Tip, Never> = .init(.none)
 ```
 
 ## [Compute Result In View Model]()
+<img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/228734139-420f0b74-2332-4163-bbe2-6a38d2a651dc.gif">
+
 CalculaterVM.swift
 ```swift
 class CalculaterVM {
