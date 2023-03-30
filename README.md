@@ -1436,3 +1436,83 @@ TipInputView.swift
     }
 ```
 
+## [Observe Split Input View](https://github.com/YamamotoDesu/tip-calculator/commit/4fff4bbd86c2760afbe50c99b4bca1136309b3cc)
+
+![2023-03-30 12 18 24](https://user-images.githubusercontent.com/47273077/228719895-0893b293-79f0-423b-a91f-d4cd11e11cf7.gif)
+
+Int+Extention.swift
+```swift
+import Foundation
+
+extension Int {
+    var stringValue: String {
+        return String(self)
+    }
+}
+```
+
+CalculaterVM.swift
+```swift
+class CalculaterVM {
+    
+    struct Input {
+        let billPublisher: AnyPublisher<Double, Never>
+        let tipPublichser: AnyPublisher<Tip, Never>
+        let splitPublisher: AnyPublisher<Int, Never>
+    }
+
+   func transform(input: Input) -> Output {
+
+        input.splitPublisher.sink { split in
+            print("the split \(split)")
+        }.store(in: &cancellables)
+```
+
+SplitInputView.swift
+```swift
+    private lazy var decrementButton: UIButton = {
+        let button = buildButton(
+            text: "-",
+            corners: [.layerMinXMaxYCorner, .layerMinXMinYCorner])
+        button.tapPublisher.flatMap { [unowned self] in
+            Just(splitSubject.value == 1 ? 1 : splitSubject.value - 1)
+        }.assign(to: \.value, on: splitSubject)
+            .store(in: &cancellable)
+        return button
+    }()
+
+    private lazy var incrementButton: UIButton = {
+        let button = buildButton(
+            text: "+",
+            corners: [.layerMaxXMinYCorner, .layerMaxXMaxYCorner])
+        button.tapPublisher.flatMap { [unowned self] in
+            Just(splitSubject.value + 1)
+        }.assign(to: \.value, on: splitSubject)
+            .store(in: &cancellable)
+        return button
+    }()
+    
+        private let splitSubject: CurrentValueSubject<Int, Never> = .init(1)
+    var valuePublisher: AnyPublisher<Int, Never> {
+        return splitSubject.removeDuplicates().eraseToAnyPublisher()
+    }
+    
+    
+    init() {
+        super.init(frame: .zero)
+        layout()
+        observe()
+    }
+    
+        private func observe() {
+        splitSubject.sink { [unowned self] quantity in
+            quantityLabel.text = quantity.stringValue
+        }.store(in: &cancellable)
+    }
+```
+
+
+TipInputView.swift
+```swift
+private let tipSubject:CurrentValueSubject<Tip, Never> = .init(.none)
+```
