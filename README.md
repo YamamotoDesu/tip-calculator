@@ -1438,7 +1438,7 @@ TipInputView.swift
 
 ## [Observe Split Input View](https://github.com/YamamotoDesu/tip-calculator/commit/4fff4bbd86c2760afbe50c99b4bca1136309b3cc)
 
-<img width="500" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/228719895-0893b293-79f0-423b-a91f-d4cd11e11cf7.giff">
+<img width="500" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/228719895-0893b293-79f0-423b-a91f-d4cd11e11cf7.gif">
 
 Int+Extention.swift
 ```swift
