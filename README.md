@@ -1517,7 +1517,7 @@ TipInputView.swift
 private let tipSubject:CurrentValueSubject<Tip, Never> = .init(.none)
 ```
 
-## [Compute Result In View Model]()
+## [Compute Result In View Model](https://github.com/YamamotoDesu/tip-calculator/commit/e0cbdcb28f9c0432bd7257e070d3551718394a8d)
 <img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/228734139-420f0b74-2332-4163-bbe2-6a38d2a651dc.gif">
 
 CalculaterVM.swift
