@@ -1385,7 +1385,7 @@ TipInputView.swift
     
 ```
 
-## [Handle Custom Tip Button Selection State]()
+## [Handle Custom Tip Button Selection State](https://github.com/YamamotoDesu/tip-calculator/commit/42ceb18a0d1ab7f1900d704bd9aa50812db05bd1)
 
 <img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/227818664-d5b4ed36-0429-43b2-a090-289a58b24d92.gif">
 
