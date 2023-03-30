@@ -24,8 +24,8 @@ class CalculaterVM {
     
     func transform(input: Input) -> Output {
         
-        input.tipPublichser.sink { tip in
-            print("the tip \(tip)")
+        input.splitPublisher.sink { split in
+            print("the split \(split)")
         }.store(in: &cancellables)
         
         let result = Result(amountPerPerson: 500, totalBill: 1000, totalTip: 50.0)

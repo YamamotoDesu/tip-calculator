@@ -64,8 +64,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "TipInputView"
-            landmarkType = "3">
+            landmarkName = "tenPercentTipButton"
+            landmarkType = "24">
             <Locations>
                <Location
                   uuid = "97FEE9BC-EB54-484B-8067-6B1C26BE84EC - 1848a1393b86471d"
