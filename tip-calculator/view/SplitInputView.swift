@@ -24,7 +24,7 @@ class SplitInputView: UIView {
         button.tapPublisher.flatMap { [unowned self] in
             Just(splitSubject.value == 1 ? 1 : splitSubject.value - 1)
         }.assign(to: \.value, on: splitSubject)
-            .store(in: &cancellable)
+            .store(in: &cancellables)
         return button
     }()
     
@@ -35,7 +35,7 @@ class SplitInputView: UIView {
         button.tapPublisher.flatMap { [unowned self] in
             Just(splitSubject.value + 1)
         }.assign(to: \.value, on: splitSubject)
-            .store(in: &cancellable)
+            .store(in: &cancellables)
         return button
     }()
     
@@ -62,7 +62,7 @@ class SplitInputView: UIView {
     var valuePublisher: AnyPublisher<Int, Never> {
         return splitSubject.removeDuplicates().eraseToAnyPublisher()
     }
-    private var cancellable = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         super.init(frame: .zero)
@@ -99,7 +99,7 @@ class SplitInputView: UIView {
     private func observe() {
         splitSubject.sink { [unowned self] quantity in
             quantityLabel.text = quantity.stringValue
-        }.store(in: &cancellable)
+        }.store(in: &cancellables)
     }
     
     private func buildButton(text: String, corners: CACornerMask) -> UIButton {
