@@ -57,9 +57,9 @@ class AmountView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func confiure(text: String) {
+    func confiure(amount: Double) {
         let text = NSMutableAttributedString(
-            string: text,
+            string: amount.currencyFormatted,
             attributes: [.font: ThemeFont.bold(ofSize: 24)])
         text.addAttributes(
             [.font: ThemeFont.bold(ofSize: 16)],
