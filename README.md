@@ -1572,9 +1572,9 @@ class CalculaterVM {
  ```
 
 ## [Display Result In Result View]()
+
 <img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/229047368-bdc5029a-1fa9-473d-a767-26ec89282314.gif">
 
-![2023-03-31 15 57 58]()
 
 ResultView.swift
 ```swift
