@@ -1694,7 +1694,7 @@ AmountView.swift
     }
  ```
 
-## [Add Tap Gestures]()
+## [Add Tap Gestures](https://github.com/YamamotoDesu/tip-calculator/commit/c21665579d7805df8b9c7763ef55452b5a1df114)
 
 <img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/229087524-d9ffb58b-394e-499c-90fd-328e5ff2c016.gif">
 
