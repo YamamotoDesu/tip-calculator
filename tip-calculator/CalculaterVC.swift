@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CalculaterVC.swift
 //  tip-calculator
 //
 //  Created by 山本響 on 2023/03/21.
@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Combine
+import CombineCocoa
 
 class CalculaterVC: UIViewController {
     
@@ -33,11 +34,29 @@ class CalculaterVC: UIViewController {
     
     private let vm = CalculaterVM()
     private var cancellables = Set<AnyCancellable>()
+    
+    private lazy var viewTapPublisher: AnyPublisher<Void, Never> = {
+        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        view.addGestureRecognizer(tapGesture)
+        return tapGesture.tapPublisher.flatMap { _ in
+            Just(())
+        }.eraseToAnyPublisher()
+    }()
+    
+    private lazy var logoViewTapPublisher: AnyPublisher<Void, Never> = {
+        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        tapGesture.numberOfTouchesRequired = 2
+        view.addGestureRecognizer(tapGesture)
+        return tapGesture.tapPublisher.flatMap { _ in
+            Just(())
+        }.eraseToAnyPublisher()
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
         bind()
+        observe()
     }
     
     private func bind() {
@@ -54,6 +73,16 @@ class CalculaterVC: UIViewController {
         }.store(in: &cancellables)
     }
 
+    private func observe() {
+        viewTapPublisher.sink { [unowned self] in
+            view.endEditing(true)
+        }.store(in: &cancellables)
+        
+        logoViewTapPublisher.sink { _ in
+            print("logo view is tapped")
+        }.store(in: &cancellables)
+    }
+    
     private func layout() {
         view.backgroundColor = ThemeColor.bg
         view.addSubview(vStackView)
