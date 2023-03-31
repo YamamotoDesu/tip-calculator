@@ -1645,7 +1645,7 @@ ViewController.swift
     }
 ```
 
-## [Format Currency Values]()
+## [Format Currency Values](https://github.com/YamamotoDesu/tip-calculator/commit/ab8cf1df4df95ca0ee09823367e3d486d231897e)
 
 <img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/229077061-10541566-a18f-4854-bb40-8d6aefb72523.gif">
 
@@ -1693,3 +1693,43 @@ AmountView.swift
         amountLabel.attributedText = text
     }
  ```
+
+## [Add Tap Gestures]()
+
+<img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/229087524-d9ffb58b-394e-499c-90fd-328e5ff2c016.gif">
+
+CalculaterVC.swift
+```swift
+    private lazy var viewTapPublisher: AnyPublisher<Void, Never> = {
+        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        view.addGestureRecognizer(tapGesture)
+        return tapGesture.tapPublisher.flatMap { _ in
+            Just(())
+        }.eraseToAnyPublisher()
+    }()
+    
+    private lazy var logoViewTapPublisher: AnyPublisher<Void, Never> = {
+        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        tapGesture.numberOfTouchesRequired = 2
+        view.addGestureRecognizer(tapGesture)
+        return tapGesture.tapPublisher.flatMap { _ in
+            Just(())
+        }.eraseToAnyPublisher()
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        layout()
+        bind()
+        observe()
+    }
+
+    private func observe() {
+        viewTapPublisher.sink { [unowned self] in
+            view.endEditing(true)
+        }.store(in: &cancellables)
+        
+        logoViewTapPublisher.sink { _ in
+            print("logo view is tapped")
+        }.store(in: &cancellables)
+    }
