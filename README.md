@@ -1644,3 +1644,52 @@ ViewController.swift
         }.store(in: &cancellables)
     }
 ```
+
+## [Format Currency Values]()
+
+<img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/229077061-10541566-a18f-4854-bb40-8d6aefb72523.gif">
+
+Double+Extention.swift
+```
+extension Double {
+    var currencyFormatted: String {
+        var isWholeNumber: Bool {
+            isZero ? true: !isNormal ? false: self == rounded()
+        }
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.minimumFractionDigits = isWholeNumber ? 0 : 2
+        return formatter.string(for: self) ?? ""
+    }
+
+}
+```
+
+ResultView.swift
+```swift
+    func configure(result: Result) {
+        let text = NSMutableAttributedString(
+            string: result.amountPerPerson.currencyFormatted,
+            attributes: [.font: ThemeFont.bold(ofSize: 48)])
+        text.addAttributes([
+            .font: ThemeFont.bold(ofSize: 24)
+        ], range: NSMakeRange(0, 1))
+        amountForPersonLabel.attributedText = text
+        totalBillView.confiure(amount: result.totalBill)
+        totalTipView.confiure(amount: result.totalTip)
+    }
+    
+```
+
+AmountView.swift
+```swift
+    func confiure(amount: Double) {
+        let text = NSMutableAttributedString(
+            string: amount.currencyFormatted,
+            attributes: [.font: ThemeFont.bold(ofSize: 24)])
+        text.addAttributes(
+            [.font: ThemeFont.bold(ofSize: 16)],
+            range: NSMakeRange(0, 1))
+        amountLabel.attributedText = text
+    }
+ ```
