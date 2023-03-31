@@ -1570,3 +1570,78 @@ class CalculaterVM {
         }
     }
  ```
+
+## [Display Result In Result View]()
+
+<img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/229047368-bdc5029a-1fa9-473d-a767-26ec89282314.gif">
+
+
+ResultView.swift
+```swift
+    private let totalBillView: AmountView = {
+        let view = AmountView(
+            title: "Total bill",
+            textAlignment: .left)
+        return view
+    }()
+    
+    private let totalTipView: AmountView = {
+        let view = AmountView(
+            title: "Total tip",
+            textAlignment: .right)
+        return view
+    }()
+    
+    private lazy var hStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            totalBillView,
+            UIView(),
+            totalTipView
+        ])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    func configure(result: Result) {
+        let text = NSMutableAttributedString(
+            string: String(result.amountPerPerson),
+            attributes: [.font: ThemeFont.bold(ofSize: 48)])
+        text.addAttributes([
+            .font: ThemeFont.bold(ofSize: 24)
+        ], range: NSMakeRange(0, 1))
+        amountForPersonLabel.attributedText = text
+        totalBillView.confiure(text: String(result.totalBill))
+        totalTipView.confiure(text: String(result.totalTip))
+    }
+```
+
+AmountView.swift
+```swift
+    func confiure(text: String) {
+        let text = NSMutableAttributedString(
+            string: text,
+            attributes: [.font: ThemeFont.bold(ofSize: 24)])
+        text.addAttributes(
+            [.font: ThemeFont.bold(ofSize: 16)],
+            range: NSMakeRange(0, 1))
+        amountLabel.attributedText = text
+    }
+```
+
+ViewController.swift
+```swift
+    private func bind() {
+        
+        let input = CalculaterVM.Input(
+            billPublisher: billInputView.valuePublisher,
+            tipPublichser: tipInputView.valuePublisher,
+            splitPublisher: splitInputView.valuePublisher)
+        
+        let output = vm.transform(input: input)
+
+        output.updateViewPublisher.sink { [unowned self] result in
+            resultView.configure(result: result)
+        }.store(in: &cancellables)
+    }
+```
