@@ -1571,10 +1571,9 @@ class CalculaterVM {
     }
  ```
 
-## [Display Result In Result View]()
+## [Display Result In Result View](https://github.com/YamamotoDesu/tip-calculator/commit/f2aa258374b199ba5f44ffe2af02751ac440cec8)
 
 <img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/229047368-bdc5029a-1fa9-473d-a767-26ec89282314.gif">
-
 
 ResultView.swift
 ```swift
