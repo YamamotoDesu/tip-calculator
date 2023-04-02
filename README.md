@@ -1737,6 +1737,8 @@ CalculaterVC.swift
 
 ## [Send Gesture Tap Publisher To VM]()
 
+<img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/229330304-b162beb1-9d56-4d46-8d42-ad39a3d604c3.gif">
+
 CalculaterVM.swift
 ```swift
 class CalculaterVM {
