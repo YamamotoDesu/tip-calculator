@@ -1735,7 +1735,7 @@ CalculaterVC.swift
     }
 ```
 
-## [Send Gesture Tap Publisher To VM]()
+## [Send Gesture Tap Publisher To VM](https://github.com/YamamotoDesu/tip-calculator/commit/c43e033ba91c4126d23109b8cecb547f1560f16d)
 
 <img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/229330304-b162beb1-9d56-4d46-8d42-ad39a3d604c3.gif">
 
@@ -1847,7 +1847,7 @@ class CalculaterVM {
     }
  ```
 
-## [Implement Calculator Reset]()
+## [Implement Calculator Reset](https://github.com/YamamotoDesu/tip-calculator/commit/4cc9f16084f5270e8790c43a3d6ef883fe8bc362)
 <img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/229331415-49aed139-ff43-4dce-bca5-b2304768997c.gif">
 
 TipInputView.swift
