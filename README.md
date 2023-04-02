@@ -1780,3 +1780,69 @@ class CalculaterVM {
                       resultCalculatorPublisher: resultCalculatorPublisher)
     }
 ```
+
+## Add Sound Effect On LogoView Tap
+AudioPlayerService.swift
+```swift
+import Foundation
+import AVFoundation
+
+protocol AudioPlayerServie {
+    func playSound()
+}
+
+final class DefaultAudioPlayer: AudioPlayerServie {
+    
+    private var player: AVAudioPlayer?
+    
+    func playSound() {
+        let path = Bundle.main.path(forResource: "click", ofType: "m4a")!
+        let url = URL(fileURLWithPath: path)
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+        } catch(let error) {
+            print(error.localizedDescription)
+        }
+    }
+}
+```
+
+CalculaterVM.swift
+```swift
+class CalculaterVM {
+
+    private let audioPlayerServie: AudioPlayerServie
+    init(audioPlayerServie: AudioPlayerServie = DefaultAudioPlayer()) {
+        self.audioPlayerServie = audioPlayerServie
+    }
+    
+    func transform(input: Input) -> Output {
+        
+        let updateViewPublisher = Publishers.CombineLatest3(
+            input.billPublisher,
+            input.tipPublichser,
+            input.splitPublisher).flatMap { [unowned self] bill, tip, split in
+                let totalTip = getTipAmount(bill: bill, tip: tip)
+                let totalBill = bill + totalTip
+                let amountPerPerson = totalBill / Double(split)
+                
+                let result = Result(
+                    amountPerPerson: amountPerPerson,
+                    totalBill: totalBill,
+                    totalTip: totalTip)
+                return Just(result)
+            }.eraseToAnyPublisher()
+        
+        let resultCalculatorPublisher = input
+            .logoViewTapPublisher
+            .handleEvents(receiveOutput: { [unowned self] in
+            audioPlayerServie.playSound()
+        }).flatMap {
+            return Just(($0))
+        }.eraseToAnyPublisher()
+        
+        return Output(updateViewPublisher: updateViewPublisher,
+                      resultCalculatorPublisher: resultCalculatorPublisher)
+    }
+ ```
