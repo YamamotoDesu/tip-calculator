@@ -12,6 +12,8 @@
 		7B0956EE29CEC6D10084CFFF /* String+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0956ED29CEC6D10084CFFF /* String+Extention.swift */; };
 		7B4B3B0929CD2BBB0052A56D /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B3B0829CD2BBB0052A56D /* Tip.swift */; };
 		7B4B3B0C29CD2C200052A56D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B3B0B29CD2C200052A56D /* HeaderView.swift */; };
+		7BB8628629D9337900111F61 /* click.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7BB8628529D9337900111F61 /* click.m4a */; };
+		7BB8628929D933DE00111F61 /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8628829D933DE00111F61 /* AudioPlayerService.swift */; };
 		7BC6B5B329D11BCF00E02626 /* UIResponder+Entention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6B5B229D11BCF00E02626 /* UIResponder+Entention.swift */; };
 		7BC6B65F29D533E500E02626 /* Int+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6B65E29D533E500E02626 /* Int+Extention.swift */; };
 		7BC6B67329D6BFE200E02626 /* Double+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6B67229D6BFE200E02626 /* Double+Extention.swift */; };
@@ -64,6 +66,8 @@
 		7B0956ED29CEC6D10084CFFF /* String+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extention.swift"; sourceTree = "<group>"; };
 		7B4B3B0829CD2BBB0052A56D /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		7B4B3B0B29CD2C200052A56D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		7BB8628529D9337900111F61 /* click.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = click.m4a; sourceTree = "<group>"; };
+		7BB8628829D933DE00111F61 /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
 		7BC6B5B229D11BCF00E02626 /* UIResponder+Entention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Entention.swift"; sourceTree = "<group>"; };
 		7BC6B65E29D533E500E02626 /* Int+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extention.swift"; sourceTree = "<group>"; };
 		7BC6B67229D6BFE200E02626 /* Double+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extention.swift"; sourceTree = "<group>"; };
@@ -139,6 +143,22 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		7BB8628429D9335100111F61 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8628529D9337900111F61 /* click.m4a */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		7BB8628729D933B500111F61 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8628829D933DE00111F61 /* AudioPlayerService.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
 		7BCFBB0129C905A60009ABA0 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +183,8 @@
 		7BCFBB0C29C905A60009ABA0 /* tip-calculator */ = {
 			isa = PBXGroup;
 			children = (
+				7BB8628729D933B500111F61 /* service */,
+				7BB8628429D9335100111F61 /* resource */,
 				7B0956E829CE9B6F0084CFFF /* view model */,
 				7B4B3B0729CD2BAB0052A56D /* model */,
 				7BCFBB5E29C945220009ABA0 /* factory */,
@@ -367,6 +389,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BB8628629D9337900111F61 /* click.m4a in Resources */,
 				7BCFBB1A29C905AD0009ABA0 /* LaunchScreen.storyboard in Resources */,
 				7BCFBB1729C905AD0009ABA0 /* Assets.xcassets in Resources */,
 			);
@@ -405,6 +428,7 @@
 				7B0956EE29CEC6D10084CFFF /* String+Extention.swift in Sources */,
 				7BCFBB5A29C92E340009ABA0 /* ThemeFont.swift in Sources */,
 				7B0956EA29CE9B8C0084CFFF /* CalculaterVM.swift in Sources */,
+				7BB8628929D933DE00111F61 /* AudioPlayerService.swift in Sources */,
 				7BCFBB6229C9B0690009ABA0 /* UIView+Extention.swift in Sources */,
 				7BCFBB1029C905A60009ABA0 /* SceneDelegate.swift in Sources */,
 				7BC6B5B329D11BCF00E02626 /* UIResponder+Entention.swift in Sources */,
