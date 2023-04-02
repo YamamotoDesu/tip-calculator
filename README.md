@@ -1846,3 +1846,66 @@ class CalculaterVM {
                       resultCalculatorPublisher: resultCalculatorPublisher)
     }
  ```
+
+## [Implement Calculator Reset]()
+<img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/229331415-49aed139-ff43-4dce-bca5-b2304768997c.gif">
+
+TipInputView.swift
+```swift
+    func reset() {
+        tipSubject.send(.none)
+    }
+```
+
+SplitInputView.swift
+```swift
+    func reset() {
+        splitSubject.send(1)
+    }
+```
+
+BillInputView.swift
+```swift
+    func reset() {
+        textField.text = nil
+        billSubject.send(0)
+    }
+```
+
+CalculaterVC.swift
+```swift
+    private func bind() {
+        
+        let input = CalculaterVM.Input(
+            billPublisher: billInputView.valuePublisher,
+            tipPublichser: tipInputView.valuePublisher,
+            splitPublisher: splitInputView.valuePublisher,
+            logoViewTapPublisher: logoViewTapPublisher)
+        
+        let output = vm.transform(input: input)
+
+        output.updateViewPublisher.sink { [unowned self] result in
+            resultView.configure(result: result)
+        }.store(in: &cancellables)
+        
+        output.resetCalculatorPublisher.sink { [unowned self] _ in
+            billInputView.reset()
+            tipInputView.reset()
+            splitInputView.reset()
+            
+            UIView.animate(
+                withDuration: 0.1,
+                delay: 0,
+                usingSpringWithDamping: 5.0,
+                initialSpringVelocity: 0.5,
+                options: .curveEaseInOut) {
+                    self.logoView.transform = .init(scaleX: 1.5, y: 1.5)
+                } completion: { _ in
+                    UIView.animate(withDuration: 0.1) {
+                        self.logoView.transform = .identity
+                    }
+                }
+        }.store(in: &cancellables)
+    }
+```
+
