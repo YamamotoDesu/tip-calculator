@@ -1694,7 +1694,7 @@ AmountView.swift
     }
  ```
 
-## [Add Tap Gestures]()
+## [Add Tap Gestures](https://github.com/YamamotoDesu/tip-calculator/commit/c21665579d7805df8b9c7763ef55452b5a1df114)
 
 <img width="300" alt="スクリーンショット 2023-03-27 9 42 08" src="https://user-images.githubusercontent.com/47273077/229087524-d9ffb58b-394e-499c-90fd-328e5ff2c016.gif">
 
@@ -1710,7 +1710,7 @@ CalculaterVC.swift
     
     private lazy var logoViewTapPublisher: AnyPublisher<Void, Never> = {
         let tapGesture = UITapGestureRecognizer(target: self, action: nil)
-        tapGesture.numberOfTouchesRequired = 2
+        tapGesture.numberOfTapsRequired = 2
         view.addGestureRecognizer(tapGesture)
         return tapGesture.tapPublisher.flatMap { _ in
             Just(())
@@ -1733,3 +1733,48 @@ CalculaterVC.swift
             print("logo view is tapped")
         }.store(in: &cancellables)
     }
+```
+
+## [Send Gesture Tap Publisher To VM]()
+
+CalculaterVM.swift
+```swift
+class CalculaterVM {
+    
+    struct Input {
+        let billPublisher: AnyPublisher<Double, Never>
+        let tipPublichser: AnyPublisher<Tip, Never>
+        let splitPublisher: AnyPublisher<Int, Never>
+        let logoViewTapPublisher: AnyPublisher<Void, Never>
+    }
+    
+    struct Output {
+        let updateViewPublisher: AnyPublisher<Result, Never>
+        let resultCalculatorPublisher: AnyPublisher<Void, Never>
+    }
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    func transform(input: Input) -> Output {
+        
+        let updateViewPublisher = Publishers.CombineLatest3(
+            input.billPublisher,
+            input.tipPublichser,
+            input.splitPublisher).flatMap { [unowned self] bill, tip, split in
+                let totalTip = getTipAmount(bill: bill, tip: tip)
+                let totalBill = bill + totalTip
+                let amountPerPerson = totalBill / Double(split)
+                
+                let result = Result(
+                    amountPerPerson: amountPerPerson,
+                    totalBill: totalBill,
+                    totalTip: totalTip)
+                return Just(result)
+            }.eraseToAnyPublisher()
+        
+        let resultCalculatorPublisher = input.logoViewTapPublisher
+        
+        return Output(updateViewPublisher: updateViewPublisher,
+                      resultCalculatorPublisher: resultCalculatorPublisher)
+    }
+```
