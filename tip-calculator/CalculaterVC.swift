@@ -45,7 +45,7 @@ class CalculaterVC: UIViewController {
     
     private lazy var logoViewTapPublisher: AnyPublisher<Void, Never> = {
         let tapGesture = UITapGestureRecognizer(target: self, action: nil)
-        tapGesture.numberOfTouchesRequired = 2
+        tapGesture.numberOfTapsRequired = 2
         view.addGestureRecognizer(tapGesture)
         return tapGesture.tapPublisher.flatMap { _ in
             Just(())
@@ -64,12 +64,17 @@ class CalculaterVC: UIViewController {
         let input = CalculaterVM.Input(
             billPublisher: billInputView.valuePublisher,
             tipPublichser: tipInputView.valuePublisher,
-            splitPublisher: splitInputView.valuePublisher)
+            splitPublisher: splitInputView.valuePublisher,
+            logoViewTapPublisher: logoViewTapPublisher)
         
         let output = vm.transform(input: input)
 
         output.updateViewPublisher.sink { [unowned self] result in
             resultView.configure(result: result)
+        }.store(in: &cancellables)
+        
+        output.resultCalculatorPublisher.sink { _ in
+            print("hey, reset the form please")
         }.store(in: &cancellables)
     }
 
