@@ -2121,3 +2121,32 @@ class MockAudioPlayerService: AudioPlayerServie {
         expectation.fulfill()
     }
 }
+
+```
+
+### Clean Up Test Code
+```swift
+final class tip_calculatorTests: XCTestCase {
+    
+    private var sut: CalculaterVM!
+    private var cancellables: Set<AnyCancellable>!
+    
+    private var logoViewTapSubject: PassthroughSubject<Void, Never>!
+    private var audioPlayerService: MockAudioPlayerService!
+
+    override func setUp() {
+        audioPlayerService = .init()
+        sut = .init(audioPlayerServie: audioPlayerService)
+        logoViewTapSubject = .init()
+        cancellables = .init()
+        super.setUp()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        sut = nil
+        cancellables = nil
+        logoViewTapSubject = nil
+        audioPlayerService = nil
+    }
+```
