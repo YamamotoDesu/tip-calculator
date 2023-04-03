@@ -2086,3 +2086,38 @@ final class tip_calculatorTests: XCTestCase {
     }
 }
 ```
+
+### Test Logo View Double Tap
+```swift
+    private var audioPlayerService: MockAudioPlayerService!
+
+    override func setUp() {
+        audioPlayerService = .init()
+        sut = .init(audioPlayerServie: audioPlayerService)
+        cancellables = .init()
+        super.setUp()
+    }
+
+    func testSoundPlayedAndCalculatorResetOnLogoViewTap() {
+        // given
+        let input = buildInput(bill: 110, tip: .tenPercent, split: 2)
+        let output = sut.transform(input: input)
+        let expectation1 = XCTestExpectation(description: "reset calculator called")
+        let expectation2 = audioPlayerService.expectation
+        // then
+        output.resetCalculatorPublisher.sink { _ in
+            expectation1.fulfill()
+        }.store(in: &cancellables)
+        // when
+        logoViewTapSubject.send()
+        wait(for: [expectation1, expectation2], timeout: 1.0)
+    }
+    
+}
+
+class MockAudioPlayerService: AudioPlayerServie {
+    var expectation = XCTestExpectation(description: "playSound is called")
+    func playSound() {
+        expectation.fulfill()
+    }
+}
